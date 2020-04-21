@@ -26,7 +26,7 @@ class MapsSpec: XCTestCase {
 
 extension MapsSpec {
   private func givenThoseTrips() {
-    stub(condition: pathMatches("api/trips")) { _ in
+    stub(condition: pathMatches("/trips")) { _ in
       return HTTPStubsResponse(jsonObject: Fixture.load("Trips.ok"),
                                  statusCode: 200,
                                  headers: nil

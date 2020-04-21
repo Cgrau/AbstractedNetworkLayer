@@ -3,7 +3,7 @@ import Alamofire
 
 struct TripsEndpoint: Endpoint {
   var path: String {
-    return "api/trips"
+    return "/trips"
   }
   
   var method: Moya.Method {
