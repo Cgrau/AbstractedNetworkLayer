@@ -27,7 +27,7 @@ struct TripsApiToDomainMapper: Mappable {
     }
   }
   
-  private func map(stops: [StopApiResponse]?) -> [TripStop]? {
+  private func map(stops: [TripStopApiResponse]?) -> [TripStop]? {
     guard let stops = stops else { return nil }
     return stops.map({ TripStop(id: $0.id,
                                 point: TripPoint(latitude: $0.point?.latitude,

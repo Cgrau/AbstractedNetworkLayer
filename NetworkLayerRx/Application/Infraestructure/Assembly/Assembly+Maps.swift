@@ -3,6 +3,10 @@ extension Assembly {
     return GetTrips(repository: mapsRepository)
   }
   
+  public var getStop: GetStopUseCase {
+    return GetStop(repository: mapsRepository)
+  }
+  
   var mapsRepository: MapsRepository {
     return MapsRepository(apiDataSource: mapsDataSource)
   }
@@ -10,6 +14,7 @@ extension Assembly {
   private var mapsDataSource: MapsDataSource {
     return MapsApiDataSource(provider: moya(),
                              errorAdapter: errorAdapter,
-                             tripsApiToDomainMapper: TripsApiToDomainMapper())
+                             tripsApiToDomainMapper: TripsApiToDomainMapper(),
+                             stopApiToDomainMapper: StopApiToDomainMapper())
   }
 }

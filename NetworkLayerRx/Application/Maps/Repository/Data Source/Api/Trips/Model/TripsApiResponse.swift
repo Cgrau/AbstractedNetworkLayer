@@ -5,7 +5,7 @@ typealias TripsApiResponse = [TripApiResponse]
 struct TripApiResponse: Encodable, Decodable {
   let description, driverName, route, status: String?
   let origin: DestinationApiResponse?
-  let stops: [StopApiResponse]?
+  let stops: [TripStopApiResponse]?
   let destination: DestinationApiResponse?
   let endTime, startTime: String?
   
@@ -16,7 +16,7 @@ struct TripApiResponse: Encodable, Decodable {
     route = try? values.decode(String.self, forKey: .route)
     status = try? values.decode(String.self, forKey: .status)
     origin = try? values.decode(DestinationApiResponse.self, forKey: .stops)
-    stops = try? values.decode([StopApiResponse].self, forKey: .stops)
+    stops = try? values.decode([TripStopApiResponse].self, forKey: .stops)
     destination = try? values.decode(DestinationApiResponse.self, forKey: .destination)
     endTime = try? values.decode(String.self, forKey: .endTime)
     startTime = try? values.decode(String.self, forKey: .startTime)
@@ -40,7 +40,7 @@ struct PointApiResponse: Codable {
 }
 
 // MARK: - Stop
-struct StopApiResponse: Codable {
+struct TripStopApiResponse: Codable {
   let id: Int?
   let point: PointApiResponse?
 }

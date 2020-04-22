@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Trip
-public struct Trip {
+public struct Trip: Codable {
   let description, driverName, route: String?
   let status: TripStatus?
   let origin: TripDestination?
@@ -16,18 +16,18 @@ public enum TripStatus: String, Codable {
 }
 
 // MARK: - Destination
-public struct TripDestination {
+public struct TripDestination: Codable {
   let address: String?
   let point: TripPoint?
 }
 
 // MARK: - Point
-public struct TripPoint {
+public struct TripPoint: Codable {
   let latitude, longitude: Double?
 }
 
 // MARK: - Stop
-public struct TripStop {
+public struct TripStop: Codable {
   let id: Int?
   let point: TripPoint?
 }

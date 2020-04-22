@@ -2,5 +2,5 @@ import RxSwift
 
 protocol MapsDataSource {
   func getTrips() -> Single<[Trip]>
-//  func getStops() -> Single<String>
+  func getStop(request: StopRequest) -> Single<Stop>
 }

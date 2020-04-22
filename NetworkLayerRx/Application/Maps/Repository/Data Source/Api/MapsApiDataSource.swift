@@ -3,16 +3,19 @@ import Moya
 
 struct MapsApiDataSource: MapsDataSource {
   
-  private let provider: MoyaProvider<TripsService>
+  private let provider: MoyaProvider<MapsService>
   private let errorAdapter: ErrorAdapter
   private let tripsApiToDomainMapper: TripsApiToDomainMapper
+  private let stopApiToDomainMapper: StopApiToDomainMapper
   
-  init(provider: MoyaProvider<TripsService>,
+  init(provider: MoyaProvider<MapsService>,
        errorAdapter: ErrorAdapter,
-       tripsApiToDomainMapper: TripsApiToDomainMapper) {
+       tripsApiToDomainMapper: TripsApiToDomainMapper,
+       stopApiToDomainMapper: StopApiToDomainMapper) {
     self.provider = provider
     self.errorAdapter = errorAdapter
     self.tripsApiToDomainMapper = tripsApiToDomainMapper
+    self.stopApiToDomainMapper = stopApiToDomainMapper
   }
   
   func getTrips() -> Single<[Trip]> {
@@ -23,7 +26,11 @@ struct MapsApiDataSource: MapsDataSource {
       .map(tripsApiToDomainMapper.map)
   }
   
-//  func getStops() -> Single<String> {
-//
-//  }
+  func getStop(request: StopRequest) -> Single<Stop> {
+    return provider.rx
+    .request(.stop(request))
+    .filterSuccessfulStatusCodes()
+    .mapOrError(StopApiResponse.self, errorAdapter.make)
+    .map(stopApiToDomainMapper.map)
+  }
 }

@@ -10,4 +10,8 @@ struct MapsRepository {
   func getTrips() -> Single<[Trip]> {
     apiDataSource.getTrips()
   }
+  
+  func getStop(request: StopRequest) -> Single<Stop> {
+    apiDataSource.getStop(request: request)
+  }
 }

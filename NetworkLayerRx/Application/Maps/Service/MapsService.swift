@@ -1,10 +1,11 @@
 import Moya
 
-enum TripsService: TargetType {
+enum MapsService: TargetType {
   case trips
+  case stop(StopRequest)
 }
 
-extension TripsService {
+extension MapsService {
   var baseURL: URL {
     return Service.baseUrl
   }
@@ -22,9 +23,11 @@ extension TripsService {
   }
 }
 
-private func endpoint(for service: TripsService) -> Endpoint {
+private func endpoint(for service: MapsService) -> Endpoint {
   switch service {
   case .trips:
     return TripsEndpoint()
+  case .stop(let request):
+    return StopEndpoint(request: request)
   }
 }
