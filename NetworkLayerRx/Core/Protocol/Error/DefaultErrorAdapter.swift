@@ -20,17 +20,34 @@ public struct PlainError: Error {
   }
 }
 
-private enum Constants {
-  static let defaultErrorMessage = ""
-  static let defaultStatusCode = Int(0)
-  static let defaultInternalCode = ""
+//You can create a new one conforming the protocol and init ErrorAdapter with it
+struct DefaultErrorConfiguration: ErrorAdapterConfiguration {
+  var messageKey = "message"
+  var internalCodeKey = "internal_code"
+  var defaultErrorMessage = ""
+  var defaultStatusCode = Int(0)
+  var defaultInternalCode = ""
 }
 
-struct PlainErrorAdapter: ErrorAdapter {
+struct DefaultErrorAdapter: ErrorAdapter {
+  var messageKey: String
+  var internalCodeKey: String
+  var defaultErrorMessage: String
+  var defaultStatusCode: Int
+  var defaultInternalCode: String
+  
+  init(configuration: ErrorAdapterConfiguration) {
+    messageKey = configuration.messageKey
+    internalCodeKey = configuration.internalCodeKey
+    defaultErrorMessage = configuration.defaultErrorMessage
+    defaultStatusCode = configuration.defaultStatusCode
+    defaultInternalCode = configuration.defaultInternalCode
+  }
+  
   func make(_ input: ErrorAdapter.Input, _ error: Error) throws -> Error {
     let errorMessage = message(for: error)
     let moyaError = error as? MoyaError
-    let statusCode = moyaError?.response?.statusCode ?? Constants.defaultStatusCode
+    let statusCode = moyaError?.response?.statusCode ?? defaultStatusCode
     let intCode = internalCode(for: error)
     throw PlainError(message: errorMessage,
                      statusCode: statusCode,
@@ -38,14 +55,14 @@ struct PlainErrorAdapter: ErrorAdapter {
   }
   
   private func message(for error: Error) -> String {
-    guard let json = mapJSON(from: error) else { return Constants.defaultErrorMessage }
-    guard let message = json["message"] as? String else { return Constants.defaultErrorMessage }
+    guard let json = mapJSON(from: error) else { return defaultErrorMessage }
+    guard let message = json[messageKey] as? String else { return defaultErrorMessage }
     return message
   }
   
   private func internalCode(for error: Error) -> String {
-    guard let json = mapJSON(from: error) else { return Constants.defaultInternalCode }
-    guard let code = json["internal_code"] as? String else { return Constants.defaultInternalCode }
+    guard let json = mapJSON(from: error) else { return defaultInternalCode }
+    guard let code = json[internalCodeKey] as? String else { return defaultInternalCode }
     return code
   }
   

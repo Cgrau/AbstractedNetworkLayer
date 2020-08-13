@@ -49,7 +49,7 @@
 		2C4C618F244DA7180009E484 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C618E244DA7180009E484 /* Dummy.swift */; };
 		2C4C6192244DA8420009E484 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C6191244DA8420009E484 /* Service.swift */; };
 		2C4C6194244DA8840009E484 /* TargetType+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C6193244DA8840009E484 /* TargetType+Default.swift */; };
-		2C4C6197244DA8F90009E484 /* PlainErrorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C6196244DA8F90009E484 /* PlainErrorAdapter.swift */; };
+		2C4C6197244DA8F90009E484 /* DefaultErrorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C6196244DA8F90009E484 /* DefaultErrorAdapter.swift */; };
 		2C4C6199244DA9990009E484 /* ErrorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C6198244DA9990009E484 /* ErrorAdapter.swift */; };
 		2C4C619E244DAA2F0009E484 /* PrimitiveSequence+CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C619D244DAA2E0009E484 /* PrimitiveSequence+CustomError.swift */; };
 		2C4C61A2244DACBD0009E484 /* DummySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C61A1244DACBD0009E484 /* DummySpec.swift */; };
@@ -132,7 +132,7 @@
 		2C4C618E244DA7180009E484 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		2C4C6191244DA8420009E484 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2C4C6193244DA8840009E484 /* TargetType+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Default.swift"; sourceTree = "<group>"; };
-		2C4C6196244DA8F90009E484 /* PlainErrorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainErrorAdapter.swift; sourceTree = "<group>"; };
+		2C4C6196244DA8F90009E484 /* DefaultErrorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultErrorAdapter.swift; sourceTree = "<group>"; };
 		2C4C6198244DA9990009E484 /* ErrorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAdapter.swift; sourceTree = "<group>"; };
 		2C4C619D244DAA2E0009E484 /* PrimitiveSequence+CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+CustomError.swift"; sourceTree = "<group>"; };
 		2C4C61A1244DACBD0009E484 /* DummySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummySpec.swift; sourceTree = "<group>"; };
@@ -268,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				2C2A3953244F395F00D76132 /* Assembly+Maps.swift */,
-				2C2A3955244F39F900D76132 /* Assembly+ErrorAdapter.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -427,6 +426,7 @@
 			children = (
 				2C4C616D244DA3460009E484 /* Assembly.swift */,
 				2C4C61A6244DB16E0009E484 /* Assembly+Moya.swift */,
+				2C2A3955244F39F900D76132 /* Assembly+ErrorAdapter.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -532,7 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4C6198244DA9990009E484 /* ErrorAdapter.swift */,
-				2C4C6196244DA8F90009E484 /* PlainErrorAdapter.swift */,
+				2C4C6196244DA8F90009E484 /* DefaultErrorAdapter.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -1001,7 +1001,7 @@
 				2C4C618B244DA6CB0009E484 /* Endpoint.swift in Sources */,
 				2C4C612E244D98BF0009E484 /* SceneDelegate.swift in Sources */,
 				2C4C617F244DA50A0009E484 /* Mappable.swift in Sources */,
-				2C4C6197244DA8F90009E484 /* PlainErrorAdapter.swift in Sources */,
+				2C4C6197244DA8F90009E484 /* DefaultErrorAdapter.swift in Sources */,
 				2C4C6178244DA44A0009E484 /* DummyApiDataSource.swift in Sources */,
 				2C4C6184244DA5730009E484 /* DummyService.swift in Sources */,
 				2C4C6176244DA4100009E484 /* DummyDataSource.swift in Sources */,
